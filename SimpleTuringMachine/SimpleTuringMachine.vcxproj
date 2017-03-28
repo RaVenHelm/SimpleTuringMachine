@@ -112,12 +112,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="double_turing_machine.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="simple_turing_machine.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="double_turing_machine.h" />
     <ClInclude Include="simple_turing_machine.hpp" />
     <ClInclude Include="turing_machine.hpp" />
   </ItemGroup>

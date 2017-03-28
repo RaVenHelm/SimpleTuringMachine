@@ -3,11 +3,9 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="simple_turing_machine.cpp" />
-    <ClCompile Include="double_turing_machine.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="simple_turing_machine.hpp" />
     <ClInclude Include="turing_machine.hpp" />
-    <ClInclude Include="double_turing_machine.h" />
   </ItemGroup>
 </Project>
