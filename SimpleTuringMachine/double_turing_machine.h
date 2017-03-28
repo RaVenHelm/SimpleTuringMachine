@@ -19,6 +19,7 @@ public:
 	};
 private:
 	int state_ = 0;
+	size_t position_ = 0;
 	
 	direction direction_;
 
@@ -35,6 +36,7 @@ public:
 	virtual int read_input(int input) override;
 	virtual bool is_stopped() override;
 
+	size_t position() const { return position_; }
 	int set_state(int new_state) { return state_ = new_state; }
 	direction set_direction(direction new_dir) { return direction_ = new_dir; }
 };

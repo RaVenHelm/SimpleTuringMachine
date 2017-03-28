@@ -3,17 +3,21 @@
 #include <utility>
 
 #include "simple_turing_machine.hpp"
+#include "double_turing_machine.h"
 
 int main()
 {
 	using std::array;
 	using std::vector;
-	simple_turing_machine machine{0};
-	vector<int> input = {0,0,0,0,1,1,1,1,0,0,0,0};
-	auto output = vector<int>{};
-	for (auto i : input)
+	double_turing_machine machine{};
+	vector<int> input = {1,1,0,1,0,0};
+	while (!machine.is_stopped())
 	{
-		output.push_back(machine.read_input(i));
+		auto pos = machine.position();
+		auto out = machine.read_input(input[pos]);
+		if ((pos + 1) >= input.size())
+			break;
+		input[pos] = out;
 	}
 	return 0;
 }

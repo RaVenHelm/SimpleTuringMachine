@@ -7,11 +7,13 @@ int double_turing_machine::delegate_0(int input)
 	if (input == 0)
 	{
 		direction_ = direction::RIGHT;
+		++position_;
 	}
 	else if (input == 1)
 	{
 		direction_ = direction::RIGHT;
 		state_ = 1;
+		++position_;
 		return 0;
 	}
 
@@ -24,10 +26,12 @@ int double_turing_machine::delegate_1(int input)
 	{
 		direction_ = direction::LEFT;
 		state_ = 2;
+		--position_;
 		return 1;
 	}
 	else if (input == 1) {
 		direction_ = direction::RIGHT;
+		++position_;
 	}
 
 	return input;
@@ -39,11 +43,13 @@ int double_turing_machine::delegate_2(int input)
 	{
 		direction_ = direction::RIGHT;
 		state_ = 3;
+		++position_;
 	}
 	else if (input == 1)
 	{
 		direction_ = direction::RIGHT;
 		state_ = 4;
+		++position_;
 		return 0;
 	}
 	return input;
@@ -61,6 +67,7 @@ int double_turing_machine::delegate_3(int input)
 	{
 		direction_ = direction::RIGHT;
 		state_ = 4;
+		++position_;
 		return 0;
 	}
 	return input;
@@ -68,11 +75,37 @@ int double_turing_machine::delegate_3(int input)
 
 int double_turing_machine::delegate_4(int input)
 {
+	if (input == 0)
+	{
+		direction_ = direction::LEFT;
+		state_ = 5;
+		--position_;
+		return 1;
+	}
+	else if (input == 1)
+	{
+		direction_ = direction::RIGHT;
+		state_ = 4;
+		++position_;
+	}
 	return input;
 }
 
 int double_turing_machine::delegate_5(int input)
 {
+	if (input == 0)
+	{
+		direction_ = direction::LEFT;
+		state_ = 2;
+		--position_;
+		return 1;
+	}
+	else if (input == 1)
+	{
+		direction_ = direction::LEFT;
+		state_ = 5;
+		++position_;
+	}
 	return input;
 }
 
@@ -83,10 +116,10 @@ double_turing_machine::double_turing_machine()
 
 int double_turing_machine::read_input(int input)
 {
-	if (is_stopped)
+	if (is_stopped())
 		return input;
 
-	switch (input)
+	switch (state_)
 	{
 	case 0:
 		return delegate_0(input);
@@ -98,6 +131,8 @@ int double_turing_machine::read_input(int input)
 		return delegate_3(input);
 	case 4:
 		return delegate_4(input);
+	case 5:
+		return delegate_5(input);
 	default:
 		return input;
 	}
